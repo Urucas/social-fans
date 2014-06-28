@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Backend Administracion Colabianchi</title>
+	<link rel="shortcut icon" href="/resources/images/favicon.ico" />
+
+	<!-- // <script src="/js/jquery-2.1.0.min.js"></script> -->
+	<!-- // <script src="/js/backend/ajaxform.js"></script> -->
+	<script src="/js/jquery-2.0.3.min.js"></script>
+	<script src="/ckeditor/ckeditor.js"></script>
+	<script src="/js/backend/ajaxform.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="/css/backend/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/css/backend/navi.css" media="screen" />
+    
+    <link href="/css/cupertino/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+	<script src="/js/backend/jquery-ui-1.10.3.custom.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function(){
+        	$(".box .h_title").not(this).next("ul").hide("normal");
+			try { $(".box .h_title").not(this).next("#<?php echo $this->seccion;?>").show("normal"); }catch(e){};
+        	$(".box").children(".h_title").click( function() { $(this).next("ul").slideToggle(); });
+        });
+	</script>
+        <?php echo $this->headScript(); ?>
+
+</head>
+<body>
+<div class="loading_modal">cargando...</div>
+<div class="wrap">
+	<div id="header">
+		<div id="top">
+			<div class="left">
+            <p>Bienvenido, <strong><?php echo ucfirst($this->user); ?></strong> [ <a href="/backend/logout">logout</a> ]</p>
+			</div>
+			<div class="right">
+				<div class="align-right">
+					<p>Colabianchi Admin</p>
+				</div>
+			</div>
+        </div>
+    </div>
+    <div id="content">
+		<div id="sidebar">
+			<div class="box">
+				<div class="h_title">&#8250; Misc</div>
+				<ul id="home">
+					<li class="b2"><a class="icon config" href="/backend/adminp">Administrador</a></li>
+				</ul>
+			</div>
+			<div class="box">
+				<div class="h_title">&#8250; Web</div>
+				<ul id="usuarios">
+					<li class="b1"><a class="icon view_page" href="/backend/inicio">Slide</a></li>
+					<li class="b1"><a class="icon report" href="/backend/novedades">Novedades</a></li>
+					<li class="b1"><a class="icon report" href="/backend/newsletter">Newsletter</a></li>
+
+				</ul>
+			</div>
+		</div>
+        <div id="main">
+            <?php echo $this->layout()->content ?>
+    	</div>
+	</div>
+
+	<script>
+		$(document).on({
+    		// When ajaxStart is fired, add 'loading' to body class
+			ajaxStart: function() {
+			   	$("body").addClass("loading"); 
+    		},
+    		// When ajaxStop is fired, rmeove 'loading' from body class
+    		ajaxStop: function() { 
+        		$("body").removeClass("loading"); 
+    		}    
+		});
+	</script>
+
+</body>
+</html>
