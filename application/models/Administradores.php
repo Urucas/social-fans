@@ -1,7 +1,7 @@
 <?php
 
 class Model_Administradores extends Zend_Db_Table {
-    protected $_name	=	'administradores';
+    protected $_name	=	'admins';
     protected $_primary	=	'id';
     protected $_order	=	'user';
     protected $_limit	=	0;
