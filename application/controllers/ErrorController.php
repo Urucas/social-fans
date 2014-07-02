@@ -8,12 +8,12 @@ class ErrorController extends Zend_Controller_Action {
 		$controller = $errors->request->getControllerName();
 
 		$error		=	$errors->exception->getMessage();
-		$error		=	$errors->exception;
+//		$error		=	$errors->exception;
 
 		header("Content-type: text/html; charset=utf-8");
-		$this->_helper->getHelper('Layout')->setLayout( 'front' );
+//		$this->_helper->getHelper('Layout')->setLayout( 'front' );
 
-		//print_r( $errors );
+		print_r( $error );
 		//  die("<br> Error"); 
 	}
 }
