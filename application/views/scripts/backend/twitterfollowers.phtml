@@ -1,0 +1,27 @@
+<div class="full_w">	
+	<div class="h_title">Twitter followers</div>
+	<div class="entry">
+		<button><a href="/backend/fetchfollowers">Fetch followers</a></button>
+	</div>
+	<div class="entry">
+		<p>Cant. followers fetched: <?= sizeof($this->followers); ?></p>
+	</div>
+	<table cellspacing="0" style="clear:none;">
+		<thead>
+		<tr>
+			<th>User</th>
+			<th>Location</th>
+		</tr>
+		</thead>
+		<tbody id="lst_followers">
+			<?php foreach($this->followers as $f) { ?>
+			<tr>
+				<td><?= $f["user"]; ?></td>
+				<td><?= $f["location"]; ?></td>
+			</tr>
+			<?php } ?>
+		</tbody>
+	</table>
+</div>
+
+

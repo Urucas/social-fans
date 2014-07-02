@@ -4,7 +4,7 @@ class BackendController extends Zend_Controller_Action
 {
     public function init(){
 		
-		$this->_helper->getHelper('Layout')->setLayout( 'back' );
+		$this->_helper->getHelper('Layout')->setLayout('back');
 		
 		$this->auth = new Zend_Session_Namespace('social_admin');
 		$this->view->assign("id",$this->auth->id);
@@ -21,18 +21,20 @@ class BackendController extends Zend_Controller_Action
 	
 		$this->checkSession();
 		$model = new Model_Twitter();
-		$model->followers($this->_request->getParam("t"));
-		$this->_redirect("/backend/users");
-
+		$model->followers(1);
+		$this->_redirect("/backend/twitterfollowers");
 	}
 
-	public function twitterusersAction() {
+	public function twitterfollowersAction() {
+		$this->checkSession();	
+		$model = new Model_Followers();
+		$this->view->followers = $model->getAll(1);
 		
 	}
 
 	public function loginAction(){
 	
-        $this->_helper->layout->disableLayout();
+    $this->_helper->layout->disableLayout();
 		if(!$this->_request->isPost()) return;	
 		
 		$user = trim($this->_request->getPost('user'));
